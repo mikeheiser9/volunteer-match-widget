@@ -2,7 +2,6 @@ import React from "react";
 import "../Form/Form.css";
 
 class Form extends React.Component {
-  
   render() {
     return (
       <div className={'form-cont'}>

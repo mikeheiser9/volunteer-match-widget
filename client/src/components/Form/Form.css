@@ -20,15 +20,15 @@
     width: 100%;
     display: flex;
     flex-flow: column;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
 }
 
 .form-inner input {
     width: 95%;
     height: 50px;
-    border-radius: 10px;
-    background-color: #ccc;
+    border-radius: 50px;
+    background-color: #fafafa;
     border: 2px solid #29abe2;
     margin-bottom: 15px;
     padding-left: 2%;
@@ -46,11 +46,11 @@
 }
 
 .form-inner button {
-    width: 100%;
+    width: 50%;
     background-color: #29abe2;
     padding-top: 12px;
     padding-bottom: 12px;
-    border-radius: 15px;
+    border-radius: 50px;
     font-size: 1em;
     font-weight: 600;
     box-shadow: 0.75rem 0.85rem 1.75rem 0 rgba(0,0,0,.32);

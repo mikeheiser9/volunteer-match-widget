@@ -1,0 +1,147 @@
+.results-container {
+    width: 100%;
+    height: auto;
+    position: relative;
+    display: flex;
+    flex-flow: column;
+    max-height: 900px;
+    height: 900px;
+    justify-content: center;
+    align-items: center;
+}
+
+.results-inner {
+    width: 90%;
+    max-width: 90%;
+    height: auto;
+    position: absolute;
+    display: flex;
+    flex-flow: row wrap;
+    max-height: 700px;
+    height: 700px;
+    box-shadow: 0.75rem 0.85rem 1.75rem 0 rgba(0,0,0,.32);
+    overflow-y: scroll;
+    overflow-x: hidden;
+    border-radius: 50px;
+    justify-content: space-around;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.abs-cont {
+    width: 100px;
+    height: 900px;
+    z-index: -100;
+}
+
+.city-header h2 {
+    color: #29abe2;
+    font-size: 2em;
+    width: 100%;
+    height: auto;
+    text-align: center;
+}
+
+.cards {
+    display: flex;
+    position: relative;
+    flex-flow: column;
+    max-width: 30%;
+    min-width: 30%;
+    box-shadow: 0.75rem 0.85rem 1.75rem 0 rgba(0,0,0,.32);
+    border-radius: 30px;
+    margin-bottom: 35px;
+    height: 450px;
+}
+
+.opp-img {
+    max-height: 50%;
+    height: 50%;
+    width: 100%;
+    border-radius: 30px;
+    display: flex;
+}
+
+.opp-img img {
+    position: relative;
+    height: 100%;
+    max-width: 100%;
+    border-radius: 30px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.card-body {
+    position: relative;
+    height: 50%;
+    border-radius: 30px;
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+.category-cont {
+    position: relative;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    height: auto;
+    margin-top: -15px;
+}
+
+.category-cont span {
+    background-color: #ccc;
+    color: #1b1464;
+    border-radius: 30px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 8px;
+    padding-right: 8px;
+    margin-bottom: 10px;
+    margin-left: 5px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.opp-title-cont {
+    padding-left: 2%;
+    padding-right: 2%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.opp-title {
+    width: 80%;
+}
+
+.date-range {
+    width: 20%;
+}
+
+.opp-title h3 {
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.date-range {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.date-range h5 {
+    font-size: 0.5em;
+}
