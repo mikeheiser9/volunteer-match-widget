@@ -1,5 +1,5 @@
 .home-container {
-    height: 100vh;
+    height: 100%;
     width: 100%;
     background: #fafafa;
     background-position: fixed;
@@ -11,4 +11,27 @@
     background-repeat: no-repeat;
     z-index: 1;
     position: relative;
+}
+
+.data-container {
+    display: flex;
+    display: -webkit-flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 400px;
+    width: 100%;
+    z-index: 1;
+    background-image: url('https://solutions.volunteermatch.org/wp-content/uploads/2019/11/banner-1.jpg');
+    background-position: bottom center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.data-container h1 {
+    max-width: 70%;
+    color: #fff;
+    font-size: 6vw;
 }
