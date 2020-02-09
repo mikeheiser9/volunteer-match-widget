@@ -66,7 +66,7 @@ class Results extends React.Component {
                         { console.log(opportunities) }
                         <div className={"opp-img"}>
                         <img
-                         src={opportunities.parentOrg.imageUrl == null ? "../../../../img/vm-logo.png" : opportunities.parentOrg.imageUrl}
+                         src={opportunities.parentOrg.imageUrl == null ? "https://bespokedemo.com/wp-content/uploads/2020/01/VolunteerMatch-Logo.png": opportunities.parentOrg.imageUrl}
                           className="card-img-top"
                           alt="oppotunity-img" />
                         </div>

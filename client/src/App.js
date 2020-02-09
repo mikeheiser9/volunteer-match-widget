@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./App.css";
-import Header from "./components/Header";
+// import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Home from "./components/Home";
 import Form from "./components/Form";
@@ -18,7 +18,7 @@ class App extends Component {
     return (
     <div className="App">
     <Router>
-      <Header />
+      {/* <Header /> */}
       <Route exact path="/" component={Home} />
       <Route exact path="/" component={Form} />
       <Route exact path="/" component={Results} />

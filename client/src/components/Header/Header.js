@@ -9,7 +9,7 @@ class Header extends React.Component {
     return (
       <div className={"header"}>
         <Link to="/">
-          <img src="../../../../img/vm-logo.png" alt="logo"></img>
+          <img src="https://bespokedemo.com/wp-content/uploads/2020/01/VolunteerMatch-Logo.png" alt={"logo"}></img>
         </Link>
       </div>
     );
