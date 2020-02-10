@@ -13,10 +13,12 @@ class Home extends React.Component {
   render() {
     return (
     <div className={"home-container"}>
-      <div className={"home-inner"}>
+    <div className={"home-inner"}>
      <div className={"data-container"}>
      <div class="hamburger-menu">
-      <img src={"https://bespokedemo.com/wp-content/uploads/2020/02/menu.png"} alt={"burger-menu"}></img>
+       <a href={"#"}>
+        <img src={"https://bespokedemo.com/wp-content/uploads/2020/02/menu.png"} alt={"burger-menu"}></img>
+       </a>
     </div>
       <div className={"corp-cont"}>
        <h1>Garvonius Gives</h1>
@@ -29,7 +31,9 @@ class Home extends React.Component {
        <img src={"https://bespokedemo.com/wp-content/uploads/2020/01/VolunteerMatch-Logo.png"} alt={"vm-logo"}></img>
       </div>
       <div className={"page-down"}>
+       <a href={"#"}>
         <img src={"https://bespokedemo.com/wp-content/uploads/2020/02/scroll.png"} alt={"page-dwn"}></img>
+       </a>
       </div>
      </div>
      </div>
