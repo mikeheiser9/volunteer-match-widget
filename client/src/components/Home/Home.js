@@ -15,7 +15,7 @@ class Home extends React.Component {
     <div className={"home-container"}>
     <div className={"home-inner"}>
      <div className={"data-container"}>
-     <div class="hamburger-menu">
+     <div className={"hamburger-menu"}>
        <a href={"#"}>
         <img src={"https://bespokedemo.com/wp-content/uploads/2020/02/menu.png"} alt={"burger-menu"}></img>
        </a>

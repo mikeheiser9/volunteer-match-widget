@@ -46,6 +46,8 @@ const callAPI = gql`{
       }
     }`;
 
+
+
 class Results extends React.Component {
   render() {
     return (
@@ -61,34 +63,59 @@ class Results extends React.Component {
             </div>
             <div className={"abs-cont"}></div>
             <div className={"results-inner"}>
-                    {data.searchOpportunities.opportunities.map(opportunities => (
-                        <div className={"cards"}>
-                        { console.log(opportunities) }
-                        <div className={"opp-img"}>
-                        <img
-                         src={opportunities.parentOrg.imageUrl == null ? "https://bespokedemo.com/wp-content/uploads/2020/01/VolunteerMatch-Logo.png": opportunities.parentOrg.imageUrl}
-                          className="card-img-top"
-                          alt="oppotunity-img" />
-                        </div>
-                        <div className={"card-body"}>
-                        <div className={"category-cont"}>
-                        <span>{opportunities.categories[0]}</span>
-                        <span>{opportunities.categories[1]}</span>
-                        <span>{opportunities.categories[2]}</span>
-                        </div>
-                        <div className={"opp-title-cont"}>
-                        <div className={"opp-title"}>
-                         <h3>{opportunities.title}</h3>
-                        </div>
-                         <div className={"date-range"}>
-                         <h5>{opportunities.dateRange.startDate == null ? "N/A" : opportunities.dateRange.startDate}</h5>
-                         </div>
-                        </div>
-        
-                        </div> 
-                        </div>
-                        )
-                    )}
+             {data.searchOpportunities.opportunities.map(opportunities => (
+              <div className={"cards"}>
+               { console.log(opportunities) }
+                <div className={"top-card"}>
+                 <div className={"opp-img"}>
+                  <div className={"img-inner"}>
+                   <img src={opportunities.parentOrg.imageUrl == null ? "https://bespokedemo.com/wp-content/uploads/2020/01/VolunteerMatch-Logo.png": opportunities.parentOrg.imageUrl} className="card-img-top" alt="oppotunity-img" />
+                  </div>                
+                 </div>
+              <div className={"org-date-cont"}>
+                <h3>{opportunities.parentOrg.name}</h3>
+                  <span>Date: {opportunities.dateRange.startDate == null ? "Open Ended" : opportunities.dateRange.startDate}</span>
+              </div>
+            </div>
+             <div className={"card-body"}>
+              <div className={"category-cont"}>
+                { opportunities.categories.length == 3 ? 
+                 <div className={"category-cont-inner"}>
+                  <span>{opportunities.categories[0]}</span>
+                  <span>{opportunities.categories[1]}</span>
+                  <span>{opportunities.categories[2]}</span> 
+                 </div>
+                : null
+                }
+                { opportunities.categories.length == 2 ? 
+                 <div className={"category-cont-inner"}>
+                  <span>{opportunities.categories[0]}</span>
+                  <span>{opportunities.categories[1]}</span>
+                 </div>
+                  : null
+                }
+                { opportunities.categories.length == 1 ? 
+                 <div className={"category-cont-inner"}>
+                  <span>{opportunities.categories[0]}</span>
+                 </div>
+                  : null
+                }
+                 </div>
+              <div className={"opp-title-cont"}>
+                <div className={"opp-title"}>
+                   <h3>{opportunities.title}</h3>
+                </div>
+                <div className={"opp-desc"}>
+                 <p>{opportunities.description}</p>
+                </div>
+               </div>
+              <div className={"learn-more"}> 
+                <span>Learn More</span>
+              </div>
+            </div> 
+      </div>
+         )
+        )}
         </div>
             </div>
           )
