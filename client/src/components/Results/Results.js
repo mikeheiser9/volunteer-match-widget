@@ -3,55 +3,105 @@ import "../Results/Results.css";
 import { Query } from 'react-apollo';
 import { gql } from 'apollo-boost';
 
-const callAPI = gql`{
-    searchOpportunities(
-        input: {
-          location: "Philadelphia, PA"
-        }
-      ) {
-        currentPage
-        resultsSize
-        opportunities {
-          title
-          categories
-          imageUrl
-          url
-          skillsNeeded
-          description
-          volunteersNeeded
-          dateRange {
-            endDate
-            endTime
-            ongoing
-            singleDayOpps
-            startDate
-            startTime
-          }
-          location {
-            street1
-            street2
-            city
-            region
-            postalCode
-            virtual
-          }
-          parentOrg {
-            name
-            mission
-            url
-            phoneNumber
-            imageUrl
-          }      
-        }
-      }
-    }`;
-
-
 
 class Results extends React.Component {
+  state = { 
+    query: gql`{
+      searchOpportunities(
+          input: {
+            location: "Philadelphia, PA"
+          }
+        ) {
+          currentPage
+          resultsSize
+          opportunities {
+            title
+            categories
+            imageUrl
+            url
+            skillsNeeded
+            description
+            volunteersNeeded
+            dateRange {
+              endDate
+              endTime
+              ongoing
+              singleDayOpps
+              startDate
+              startTime
+            }
+            location {
+              street1
+              street2
+              city
+              region
+              postalCode
+              virtual
+            }
+            parentOrg {
+              name
+              mission
+              url
+              phoneNumber
+              imageUrl
+            }      
+          }
+        }
+      }`
+  }
+
+  componentDidUpdate(prevProps, prevState){
+    if(prevProps.location !== this.props.location){
+      this.setState({
+        query: gql`{
+          searchOpportunities(
+              input: {
+                location: "${this.props.location}"
+              }
+            ) {
+              currentPage
+              resultsSize
+              opportunities {
+                title
+                categories
+                imageUrl
+                url
+                skillsNeeded
+                description
+                volunteersNeeded
+                dateRange {
+                  endDate
+                  endTime
+                  ongoing
+                  singleDayOpps
+                  startDate
+                  startTime
+                }
+                location {
+                  street1
+                  street2
+                  city
+                  region
+                  postalCode
+                  virtual
+                }
+                parentOrg {
+                  name
+                  mission
+                  url
+                  phoneNumber
+                  imageUrl
+                }      
+              }
+            }
+          }`
+      })
+    }
+  }
+  
   render() {
     return (
-        <Query query={callAPI}>
+        <Query query={this.state.query}>
         {({ loading, error, data }) => {
           if (loading) return <p>Just a moment please...</p>
           if (error) return <p>Looks like we've got a problem...</p>
