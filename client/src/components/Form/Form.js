@@ -2,6 +2,17 @@ import React from "react";
 import "../Form/Form.css";
 
 class Form extends React.Component {
+  state = {
+    location: ""
+  };
+
+  handleInputChange = (e) => {
+    this.setState({
+      location: e.target.value
+    })
+  }
+
+
   render() {
     return (
       <div className={'form-cont'}>
@@ -10,6 +21,7 @@ class Form extends React.Component {
          <label>Where are you looking for volunteer opportunities?</label>
             <input
              onChange={this.handleInputChange}
+             value={this.state.location}
              name={"location"}
              type={"text"}
              placeholder={"Enter Your Location"}
@@ -17,7 +29,7 @@ class Form extends React.Component {
             />
         <button
             type="submit"
-            onClick={this.handleFormSubmit}
+            onClick={()=>this.props.handleFormSubmit(this.state.location)}
             className="btn btn-success">
             Search Volunteer Opportunities
         </button>
