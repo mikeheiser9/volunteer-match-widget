@@ -14,7 +14,7 @@
     width: 90%;
     max-width: 90%;
     height: auto;
-    position: absolute;
+    position: relative;
     display: flex;
     flex-flow: row wrap;
     max-height: 700px;
@@ -25,13 +25,12 @@
     justify-content: space-around;
     padding-top: 30px;
     padding-bottom: 30px;
-    margin-top: 50px;
-}
+    margin-top: 20px;
+    margin-bottom: 50px;
+}   
 
-.abs-cont {
-    width: 100px;
-    height: 900px;
-    z-index: -100;
+.city-header {
+    position: relative;
 }
 
 .city-header h2 {
@@ -46,27 +45,32 @@
     display: flex;
     position: relative;
     flex-flow: column;
-    max-width: 26%;
-    min-width: 26%;
+    max-width: 300px;
+    width: 300px;
     box-shadow: 0.75rem 0.85rem 1.75rem 0 rgba(0,0,0,.32);
     border-radius: 30px;
     margin-bottom: 50px;
-    height: 375px;
+    height: 435px;
+    overflow: hidden;
+    padding: 10px 5px;
+    margin-left: 20px;
 }
 
 .top-card {
+    position: relative;
     display: flex;
     flex-flow: row nowrap;
     width: 100%;
-    max-height: 25%;
-    height: 25%;
+    height: 100px;
 }
 
 .opp-img {
+    position: relative;
     display: flex;
     flex-flow: column;
     width: 30%;
-    max-width: 25%;
+    max-width: 30%;
+    min-width: 30%;
     justify-content: center;
     align-items: center;
     height: 85%;
@@ -74,6 +78,7 @@
 }
 
 .img-inner {
+    position: relative;
     height: 100% !important;
     max-width: 100%;
     width: 100%;
@@ -94,6 +99,7 @@
 }
 
 .org-date-cont {
+    position: relative;
     display: flex;
     flex-flow: column;
     width: 75%;
@@ -103,6 +109,7 @@
     text-align: left;
     padding-left: 3%;
     padding-right: 3%;
+    overflow: hidden;
 }
 
 .org-date-cont h3 {
@@ -111,6 +118,8 @@
     font-size: 1em;
     font-weight: 600;
     margin-bottom: 5px;
+    max-width: 100%;
+    text-overflow: ellipsis;
 }
 
 .org-date-cont span {
@@ -122,7 +131,6 @@
 .card-body {
     position: relative;
     height: 75%;
-    border-radius: 30px;
     width: 100%;
     display: flex;
     flex-flow: column;
@@ -148,10 +156,11 @@
     position: relative;
     display: flex;
     flex-flow: row wrap;
-    align-items: center;
+    align-items: flex-start;
     justify-content: flex-start;
     width: 100%;
     height: auto;
+    min-height: 60px;
 }
 
 .category-cont-inner span {
@@ -169,6 +178,8 @@
 }
 
 .opp-title-cont {
+    position: relative;
+    width: 100%;
     padding-left: 3%;
     padding-right: 3%;
     display: flex;
@@ -178,7 +189,10 @@
 }
 
 .opp-title {
+    position: relative;
     width: 100%;
+    max-width: 100%;
+    text-overflow: ellipsis;
 }
 
 .date-range {
@@ -212,8 +226,25 @@
     overflow: hidden;
     font-size: .8em;
     font-weight: 300;
+    width: 100%;
+    max-width: 100%;
 }
 
 .learn-more {
+    position: absolute;
     display: flex;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.learn-more a {
+    background-color: #29abe2;
+    padding: 10px;
+    border-radius: 30px;
+    color: #fff;
+    text-decoration: none;
 }

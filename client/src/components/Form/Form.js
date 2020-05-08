@@ -29,7 +29,7 @@ class Form extends React.Component {
             />
         <button
             type="submit"
-            onClick={()=>this.props.handleFormSubmit(this.state.location)}
+            onClick={(event)=>this.props.handleFormSubmit(event, this.state.location)}
             className="btn btn-success">
             Search Volunteer Opportunities
         </button>

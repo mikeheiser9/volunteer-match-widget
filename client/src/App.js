@@ -15,7 +15,8 @@ class App extends Component {
     location: ""
   };
 
-  handleFormSubmit = (location) => {
+  handleFormSubmit = (event, location) => {
+    event.preventDefault()
     this.setState({
       location: location
     })

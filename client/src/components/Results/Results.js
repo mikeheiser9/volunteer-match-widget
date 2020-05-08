@@ -2,6 +2,12 @@ import React from "react";
 import "../Results/Results.css";
 import { Query } from 'react-apollo';
 import { gql } from 'apollo-boost';
+import startCase from 'lodash/startCase';
+import camelCase from 'lodash/camelCase';
+import template from 'lodash/template';
+
+
+
 
 
 class Results extends React.Component {
@@ -9,7 +15,7 @@ class Results extends React.Component {
     query: gql`{
       searchOpportunities(
           input: {
-            location: "Philadelphia, PA"
+            location: "Sacremento, CA"
           }
         ) {
           currentPage
@@ -100,6 +106,7 @@ class Results extends React.Component {
   }
   
   render() {
+    const regex = /(<([^>]+)>)/ig;
     return (
         <Query query={this.state.query}>
         {({ loading, error, data }) => {
@@ -111,15 +118,14 @@ class Results extends React.Component {
              <div className={"city-header"}>
               <h2>Opportunities Near {data.searchOpportunities.opportunities[0].location.city}</h2>
             </div>
-            <div className={"abs-cont"}></div>
             <div className={"results-inner"}>
-             {data.searchOpportunities.opportunities.map(opportunities => (
-              <div className={"cards"}>
+             {data.searchOpportunities.opportunities.map((opportunities, index) => (
+              <div className={"cards"} key={index}>
                { console.log(opportunities) }
                 <div className={"top-card"}>
                  <div className={"opp-img"}>
                   <div className={"img-inner"}>
-                   <img src={opportunities.parentOrg.imageUrl === null ? "https://bespokedemo.com/wp-content/uploads/2020/01/VolunteerMatch-Logo.png": opportunities.parentOrg.imageUrl} className="card-img-top" alt="oppotunity-img" />
+                   <img src={opportunities.imageUrl === null ? "https://bespokedemo.com/wp-content/uploads/2020/01/VolunteerMatch-Logo.png": opportunities.imageUrl} className="card-img-top" alt="oppotunity-img" />
                   </div>                
                  </div>
                 <div className={"org-date-cont"}>
@@ -131,22 +137,22 @@ class Results extends React.Component {
               <div className={"category-cont"}>
                 { opportunities.categories.length === 3 ? 
                  <div className={"category-cont-inner"}>
-                  <span>{opportunities.categories[0]}</span>
-                  <span>{opportunities.categories[1]}</span>
-                  <span>{opportunities.categories[2]}</span> 
+                  <span>{startCase(camelCase(opportunities.categories[0]))}</span>
+                  <span>{startCase(camelCase(opportunities.categories[1]))}</span>
+                  <span>{startCase(camelCase(opportunities.categories[2]))}</span> 
                  </div>
                 : null
                 }
                 { opportunities.categories.length === 2 ? 
                  <div className={"category-cont-inner"}>
-                  <span>{opportunities.categories[0]}</span>
-                  <span>{opportunities.categories[1]}</span>
+                  <span>{startCase(camelCase(opportunities.categories[0]))}</span>
+                  <span>{startCase(camelCase(opportunities.categories[1]))}</span>
                  </div>
                   : null
                 }
                 { opportunities.categories.length === 1 ? 
                  <div className={"category-cont-inner"}>
-                  <span>{opportunities.categories[0]}</span>
+                  <span>{startCase(camelCase(opportunities.categories[0]))}</span>
                  </div>
                   : null
                 }
@@ -156,8 +162,8 @@ class Results extends React.Component {
                    <h3>{opportunities.title}</h3>
                 </div>
                 <div className={"opp-desc"}>
-                  {console.log("desc " + opportunities.description)}
-                 <div>{opportunities.description}</div>
+                  {/* {console.log("desc " + opportunities.description)} */}
+                 <p>{opportunities.description.replace(regex,'')}</p>
                 </div>
                </div>
               <div className={"learn-more"}> 
@@ -165,7 +171,7 @@ class Results extends React.Component {
                 <span>Learn More</span>
                </a>
               </div>
-            </div> 
+            </div>
         </div>
          )
         )}
