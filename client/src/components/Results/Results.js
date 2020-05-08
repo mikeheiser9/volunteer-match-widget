@@ -112,7 +112,7 @@ class Results extends React.Component {
         {({ loading, error, data }) => {
           if (loading) return <p>Just a moment please...</p>
           if (error) return <p>Looks like we've got a problem...</p>
-          console.log("this is where the data goes" + JSON.stringify(data.searchOpportunities.opportunities, null, 4));
+          // console.log("this is where the data goes" + JSON.stringify(data.searchOpportunities.opportunities, null, 4));
           return (
             <div className={"results-container"}>
              <div className={"city-header"}>

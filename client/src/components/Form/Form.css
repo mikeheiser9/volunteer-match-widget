@@ -10,7 +10,7 @@
 }
 
 .form-inner {
-    width: 50%;
+    width: 65%;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -20,11 +20,11 @@
     width: 100%;
     display: flex;
     flex-flow: column;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
 }
 
-.form-inner input {
+.form-inner input[type="text"] {
     width: 95%;
     height: 50px;
     border-radius: 50px;
@@ -37,26 +37,70 @@
     box-shadow: 0.75rem 0.85rem 1.75rem 0 rgba(0,0,0,.32);
 }
 
-.form-inner label {
+.text-input-label {
     font-size: 2em;
-    text-align: left;
+    text-align: center;
     padding-bottom: 15px;
     font-weight: 500;
     color: #1b1464;
 }
 
 .form-inner button {
-    width: 50%;
+    width: 60%;
     background-color: #29abe2;
     padding-top: 12px;
     padding-bottom: 12px;
     border-radius: 50px;
-    font-size: 1em;
-    font-weight: 600;
+    font-size: 1.3em;
+    font-weight: 800;
     box-shadow: 0.75rem 0.85rem 1.75rem 0 rgba(0,0,0,.32);
-    color: #1b1464;
+    color: #ff0000;
 }
 
 .form-inner button:hover {
     cursor: pointer;
+}
+
+.cat-check-parent {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    justify-content: space-around;
+    margin: 20px 0px;
+}
+
+.select-cat {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.cat-check-input {
+    position: relative;
+    display: flex;
+    flex-flow: row-reverse nowrap;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    background-color: #29abe2;
+    border-radius: 30px;
+    padding: 0px 15px;
+    margin-bottom: 20px;
+}
+
+.cat-check-input input[type="checkbox"] {
+    min-width: 50px;
+    min-height: 50px;
+    background-color: #29abe2;
+    border: 1px solid #000;
+}
+
+.cat-check-input label {
+    font-size: 18px;
+    margin-right: 15px;
 }
