@@ -7,15 +7,13 @@ import camelCase from 'lodash/camelCase';
 import template from 'lodash/template';
 
 
-
-
-
 class Results extends React.Component {
   state = { 
     query: gql`{
       searchOpportunities(
           input: {
-            location: "Sacremento, CA"
+            location: "Sacremento, CA",
+            categories: []
           }
         ) {
           currentPage
@@ -57,12 +55,23 @@ class Results extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState){
-    if(prevProps.location !== this.props.location){
+    if(prevProps.form.location !== this.props.form.location){
+      
+      const object = this.props.form;
+      let arr = [];
+      // console.log(object);
+        for (const property in object) {
+         if (object[property] === true) {
+          arr.push(property)
+        }
+      }
+      console.log(arr)
       this.setState({
         query: gql`{
           searchOpportunities(
               input: {
-                location: "${this.props.location}"
+                location: "${this.props.form.location}",
+                categories: ${arr}
               }
             ) {
               currentPage
@@ -121,7 +130,7 @@ class Results extends React.Component {
             <div className={"results-inner"}>
              {data.searchOpportunities.opportunities.map((opportunities, index) => (
               <div className={"cards"} key={index}>
-               { console.log(opportunities) }
+               {/* { console.log(opportunities) } */}
                 <div className={"top-card"}>
                  <div className={"opp-img"}>
                   <div className={"img-inner"}>

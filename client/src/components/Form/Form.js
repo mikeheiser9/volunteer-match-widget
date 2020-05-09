@@ -3,17 +3,28 @@ import "../Form/Form.css";
 
 class Form extends React.Component {
   state = {
-    location: ""
+    location: "",
+    hunger: false,
+    education: false,
+    health: false,
+    services: false
   };
 
   handleInputChange = (e) => {
     this.setState({
-      location: e.target.value
+      location: e.target.value,
     })
   }
 
+  handleFilter = (evt) => {
+    this.setState({
+      [evt.target.name] : !this.state[`${evt.target.name}`]
+    })
+  }
+  
 
   render() {
+    console.log(this.state);
     return (
       <div className={'form-cont'}>
         <div className={'form-inner'}>
@@ -35,9 +46,9 @@ class Form extends React.Component {
             <div className={"cat-check-parent"}>
             <div className={"cat-check-input"}>
              <input
-             //  onChange={this.handleInputChange}
-             value={this.state.location}
-             name={"food"}
+              onChange={this.handleFilter}
+             value={this.state.hunger}
+             name={"hunger"}
              type={"checkbox"}
              id={"cation-input"}
             />
@@ -45,9 +56,9 @@ class Form extends React.Component {
             </div>
             <div className={"cat-check-input"}>
              <input
-             //  onChange={this.handleInputChange}
+              onChange={this.handleFilter}
              value={this.state.location}
-             name={"food"}
+             name={"health"}
              type={"checkbox"}
              id={"cation-input"}
             />
@@ -55,7 +66,7 @@ class Form extends React.Component {
             </div>
             <div className={"cat-check-input"}>
              <input
-             //  onChange={this.handleInputChange}
+              onChange={this.handleFilter}
              value={this.state.location}
              name={"education"}
              type={"checkbox"}
@@ -65,7 +76,7 @@ class Form extends React.Component {
             </div>
             <div className={"cat-check-input"}>
              <input
-             //  onChange={this.handleInputChange}
+            onChange={this.handleFilter}
              value={this.state.location}
              name={"services"}
              type={"checkbox"}
@@ -76,7 +87,7 @@ class Form extends React.Component {
             </div>
         <button
             type="submit"
-            onClick={(event)=>this.props.handleFormSubmit(event, this.state.location)}
+            onClick={(event)=>this.props.handleFormSubmit(event, this.state)}
             className="btn btn-success">
             Search Volunteer Opportunities
         </button>

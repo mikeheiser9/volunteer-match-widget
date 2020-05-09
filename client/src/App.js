@@ -12,19 +12,15 @@ import Results from "./components/Results";
 class App extends Component {
   state = {
     data: null,
-    location: ""
+    form: ""
   };
 
-  handleFormSubmit = (event, location) => {
+  handleFormSubmit = (event, form) => {
     event.preventDefault()
     this.setState({
-      location: location
+      form: form
     })
   }
-
-  //this.handleLocationInput
-
-  //this.state.location
 
   render() {
     return (
@@ -33,7 +29,7 @@ class App extends Component {
       {/* <Header /> */}
       <Route exact path="/" component={Home} />
       <Route exact path="/" render={ ()=> <Form handleFormSubmit={this.handleFormSubmit} />}/>
-      <Route exact path="/" render={ ()=> <Results location={this.state.location} /> } />
+      <Route exact path="/" render={ ()=> <Results form={this.state.form} /> } />
       <Footer />
     </Router>
     </div>
