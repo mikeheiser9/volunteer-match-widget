@@ -5,9 +5,9 @@ class Form extends React.Component {
   state = {
     location: "",
     hunger: false,
-    education: false,
-    health: false,
-    services: false
+    educationAndLiteracy: false,
+    healthAndMedicine: false,
+    emergencyAndSafety: false
   };
 
   handleInputChange = (e) => {
@@ -57,28 +57,28 @@ class Form extends React.Component {
             <div className={"cat-check-input"}>
              <input
               onChange={this.handleFilter}
-             value={this.state.location}
-             name={"health"}
-             type={"checkbox"}
-             id={"cation-input"}
+              value={this.state.healthAndMedicine}
+              name={"healthAndMedicine"}
+              type={"checkbox"}
+              id={"cation-input"}
             />
              <label>Health and Safety</label>
             </div>
             <div className={"cat-check-input"}>
              <input
               onChange={this.handleFilter}
-             value={this.state.location}
-             name={"education"}
-             type={"checkbox"}
-             id={"cation-input"}
+              value={this.state.educationAndLiteracy}
+              name={"educationAndLiteracy"}
+              type={"checkbox"}
+              id={"cation-input"}
             />
              <label>Education</label>
             </div>
             <div className={"cat-check-input"}>
              <input
             onChange={this.handleFilter}
-             value={this.state.location}
-             name={"services"}
+             value={this.state.emergencyAndSafety}
+             name={"emergencyAndSafety"}
              type={"checkbox"}
              id={"cation-input"}
             />
