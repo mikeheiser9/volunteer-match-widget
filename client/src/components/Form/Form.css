@@ -66,16 +66,16 @@
 }
 
 .essential-msg h4 {
-    font-size: 28px;
+    font-size: 20px;
 }
 
 .cat-check-parent {
     position: relative;
     width: 100%;
     display: flex;
-    flex-flow: row;
+    flex-flow: row wrap;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
     margin: 20px 0px;
 }
 
@@ -101,14 +101,42 @@
     margin-bottom: 20px;
 }
 
-.cat-check-input input[type="checkbox"] {
+.cat-check-input input[type="checkbox"], .virt-opp-cont input[type="checkbox"] {
     min-width: 50px;
     min-height: 50px;
     background-color: #29abe2;
     border: 1px solid #000;
 }
 
-.cat-check-input label {
+.cat-check-input label, .virt-opp-cont label {
     font-size: 18px;
     margin-right: 15px;
+}
+
+.virt-opp-cont {
+    position: relative;
+    display: flex;
+    flex-flow: row-reverse nowrap;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    padding: 0px 15px;
+    margin-bottom: 20px; 
+}
+
+.top-input-cont {
+    position: relative;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@media only screen and (max-width: 1024px) {
+    .cat-check-input input[type="checkbox"], .virt-opp-cont input[type="checkbox"] {
+        min-width: 0px;
+        min-height: 0px;
+        max-width: 80px;
+        max-height: 80px;
+    }
 }

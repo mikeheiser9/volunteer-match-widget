@@ -13,7 +13,8 @@ class Results extends React.Component {
       searchOpportunities(
           input: {
             location: "Sacremento, CA",
-            categories: []
+            categories: [],
+            virtual: false
           }
         ) {
           currentPage
@@ -55,25 +56,24 @@ class Results extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState){
-    if(prevProps.form.location !== this.props.form.location){
+    if(prevProps.form !== this.props.form){
       
       const object = this.props.form;
       let arr = [];
-      // console.log(object);
         for (const property in object) {
          if (object[property] === true) {
           arr.push(property)
         }
       }
-      console.log(arr)
+      console.log(JSON.stringify(arr), object);
       this.setState({
         query: gql`{
           searchOpportunities(
               input: {
                 location: "${this.props.form.location}",
-                categories: ${arr}
-              }
-            ) {
+                categories: ${JSON.stringify(arr).replace(/["]+/g, '')} 
+              }) 
+              {
               currentPage
               resultsSize
               opportunities {
@@ -120,8 +120,8 @@ class Results extends React.Component {
         <Query query={this.state.query}>
         {({ loading, error, data }) => {
           if (loading) return <p>Just a moment please...</p>
-          if (error) return <p>Looks like we've got a problem...</p>
-          // console.log("this is where the data goes" + JSON.stringify(data.searchOpportunities.opportunities, null, 4));
+          if (error) return <p>Looks like we've got a problem... Plese try again</p>
+          console.log("this is where the data goes" + JSON.stringify(data.searchOpportunities.opportunities, null, 4));
           return (
             <div className={"results-container"}>
              <div className={"city-header"}>

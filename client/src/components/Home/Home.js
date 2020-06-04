@@ -20,8 +20,9 @@ class Home extends React.Component {
         <img src={"https://bespokedemo.com/wp-content/uploads/2020/02/menu.png"} alt={"burger-menu"}></img>
        </a>
     </div>
+    <div className={"intro-cont"}>
       <div className={"corp-cont"}>
-       <h1>Garvonius Gives</h1>
+       <h1>ABC inc.</h1>
       </div>
       <div className={"sub-header"}>
        <h3>Join Local Efforts. Make an Impact</h3>
@@ -29,6 +30,7 @@ class Home extends React.Component {
       <div className={"powered-by"}>
        <span>Powered by:</span>
        <img src={"https://bespokedemo.com/wp-content/uploads/2020/01/VolunteerMatch-Logo.png"} alt={"vm-logo"}></img>
+      </div>
       </div>
       <div className={"page-down"}>
        <a href={"#"}>

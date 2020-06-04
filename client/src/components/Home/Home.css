@@ -8,7 +8,7 @@
     z-index: 1;
     position: relative;
     background-image: url('https://bespokedemo.com/wp-content/uploads/2020/02/VM-API-HEADER.png');
-    background-position: center center;
+    background-position: bottom center;
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -46,8 +46,17 @@
     z-index: 1;
 }
 
+.intro-cont {
+    display: flex;
+    display: -webkit-flex;
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    position: relative;
+}
+
 .corp-cont h1 {
-    max-width: 99%;
+    max-width: 100%;
     color: #fff;
     font-size: 7.5vw;
     text-align: left;
@@ -114,4 +123,63 @@
 .hamburger-menu img {
     max-width: 55px;
     height: auto;
+}
+
+
+
+@media only screen and (max-width: 767px) {
+ .cards{
+    margin-left: 0;
+ }
+}
+
+@media only screen and (max-width: 500px) {
+    .data-container {
+        height: 500px;
+    }
+    
+    .corp-cont h1 {
+        font-size: 12.5vw;
+    }
+
+    .sub-header h3 {
+        font-size: 4vw;
+    }
+
+    .page-down {
+        display: none;
+    }
+
+    .powered-by span {
+        font-size: 3vw;
+    }
+
+    .form-inner {
+        width: 90% !important;
+    }
+
+    .powered-by img {
+        max-width: 150px;
+    }
+
+    .cat-check-input input[type="checkbox"], .virt-opp-cont input[type="checkbox"] {
+        min-width: 35px !important;
+        min-height: 0px !important;
+        max-width: 80px !important;
+        max-height: 80px !important;
+    }
+
+    .form-inner button {
+        width: 100% !important;
+    }
+
+    .results-container {
+        margin-top: 30px !important;
+    }
+
+    .results-inner {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-shadow: none !important;
+    }
 }
