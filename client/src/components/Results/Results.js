@@ -126,7 +126,7 @@ class Results extends React.Component {
           return (
             <div className={"results-container"}>
              <div className={"city-header"}>
-              <h2>Opportunities Near {this.props.form.location 
+              <h2>Opportunities Near {startCase(this.props.form.location) 
               || ('Sacramento')}</h2>
             </div>
             <div className={"results-inner"}>
