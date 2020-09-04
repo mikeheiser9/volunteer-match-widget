@@ -12,7 +12,8 @@ class Form extends React.Component {
     kids: false,
     seniors: false,
     teens: false,
-    groups: false
+    groups: false,
+    keywords: ""
   };
 
   handleInputChange = (e) => {
@@ -23,6 +24,12 @@ class Form extends React.Component {
     }
     this.setState({
       location: e.target.value
+    })
+  }
+
+  handleKeywordsInputChange = (e) => {
+    this.setState({
+      keywords: e.target.value
     })
   }
 
@@ -166,6 +173,21 @@ class Form extends React.Component {
                 <label>Teens</label>
               </div>
             </div>
+
+            <div className={"select-cat"}>
+              <div className={"essential-msg"}>
+                <h4>Keywords:</h4>
+              </div>
+            </div>                
+            <input
+              onChange={this.handleKeywordsInputChange}
+              value={this.state.keywords}
+              name={"keywords"}
+              type={"text"}
+              placeholder={"Filter by keywords (optional)"}
+              id={"cation-input"}
+              style={{marginBottom: "50px"}}
+              />
 
         <button
             type="submit"

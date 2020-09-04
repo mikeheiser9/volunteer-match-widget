@@ -15,7 +15,8 @@ class Results extends React.Component {
             location: "Sacramento, CA",
             categories: [],
             virtual: true,
-            greatFor: [kids]
+            greatFor: [],
+            keywords: []
           }
         ) {
           currentPage
@@ -62,6 +63,8 @@ class Results extends React.Component {
       const object = this.props.form;
       let arr = [];
       let greatFor = []
+      let keywordsArr = JSON.stringify(this.props.form.keywords.replace(/[^a-zA-Z0-9 ]/g, "").split(" "))
+      console.log("68", keywordsArr)
         for (const property in object) {
          if (object[property] === true && property !== 'virtual') {
           if(property === "food"){
@@ -91,6 +94,7 @@ class Results extends React.Component {
                 virtual: ${this.props.form.virtual},
                 categories: ${JSON.stringify(arr).replace(/["]+/g, '')},
                 greatFor: ${JSON.stringify(greatFor).replace(/["]+/g, '')},
+                keywords: ${keywordsArr}
               }) 
               {
               currentPage
@@ -126,7 +130,7 @@ class Results extends React.Component {
                   phoneNumber
                   imageUrl
                 }
-                greatFor     
+                greatFor    
               }
             }
           }`
@@ -139,6 +143,7 @@ class Results extends React.Component {
     return (
         <Query query={this.state.query}>
         {({ loading, error, data }) => {
+          console.log(error)
           if (loading) return <p>Just a moment please...</p>
           if (error) return <p>Looks like we've got a problem... Plese try again</p>
           // console.log("this is where the data goes" + JSON.stringify(data.searchOpportunities.opportunities, null, 4));
@@ -202,12 +207,17 @@ class Results extends React.Component {
                  <p>{opportunities.description.replace(regex,'')}</p>
                 </div>
                </div>
-               <div className={"category-cont-inner"} style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
-                  <h5>Great for:</h5>
-                  {opportunities.greatFor.map((item, index)=>{
-                    return <span key={index}>{item}</span>
-                  })}
-                 </div>
+               {
+                 opportunities.greatFor?.length > 0 
+                  ? <div className={"category-cont-inner"} style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
+                      <h5 style={{marginTop: '10px'}}>Great for:</h5>
+                      {opportunities.greatFor?.map((item, index)=>{
+                        return <span key={index}>{item}</span>
+                      })}
+                    </div>
+                  : <div className={"category-cont-inner"} style={{display: "flex", justifyContent: "center", alignItems: "center"}}></div>
+
+               }
               <div className={"learn-more"}> 
                <a href={opportunities.url} target={"_blank"}>
                 <span>Learn More</span>
