@@ -14,12 +14,12 @@ class Results extends React.Component {
           input: {
             location: "Sacramento, CA",
             categories: [],
-            virtual: true
+            virtual: true,
+            greatFor: [kids]
           }
         ) {
           currentPage
           resultsSize
-          greatFor
           opportunities {
             title
             categories
@@ -51,6 +51,7 @@ class Results extends React.Component {
               phoneNumber
               imageUrl
             }      
+            greatFor
           }
         }
       }`
@@ -58,7 +59,6 @@ class Results extends React.Component {
 
   componentDidUpdate(prevProps, prevState){
     if(prevProps.form !== this.props.form){
-      
       const object = this.props.form;
       let arr = [];
       let greatFor = []
@@ -148,7 +148,7 @@ class Results extends React.Component {
                {
                  this.props.form.virtual
                   ? <h2>Virtual Opportunities</h2>
-                  : <h2>Opportunities Near {startCase(this.props.form.location)}</h2>
+                  : <h2>Opportunities Near {startCase(this.props.form.location) || ('Sacramento')} </h2>
                }
 
             </div>

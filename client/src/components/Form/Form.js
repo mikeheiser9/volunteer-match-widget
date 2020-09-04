@@ -8,7 +8,11 @@ class Form extends React.Component {
     food: false,
     education: false,
     healthAndSafety: false,
-    services: false
+    services: false,
+    kids: false,
+    seniors: false,
+    teens: false,
+    groups: false
   };
 
   handleInputChange = (e) => {

@@ -16,7 +16,6 @@ class App extends Component {
   };
 
   handleFormSubmit = (event, form) => {
-    console.log("19", form)
     event.preventDefault()
     this.setState({
       form: form
