@@ -14,11 +14,12 @@ class Results extends React.Component {
           input: {
             location: "Sacramento, CA",
             categories: [],
-            virtual: false
+            virtual: true
           }
         ) {
           currentPage
           resultsSize
+          greatFor
           opportunities {
             title
             categories
@@ -60,19 +61,36 @@ class Results extends React.Component {
       
       const object = this.props.form;
       let arr = [];
+      let greatFor = []
         for (const property in object) {
          if (object[property] === true && property !== 'virtual') {
-          arr.push(property)
+          if(property === "food"){
+            arr.push("hunger")
+          }
+          else if(property === "healthAndSafety"){
+            arr.push("homelessAndHousing", "crisisSupport", "disasterRelief", "emergencyAndSafety", "healthAndMedicine")
+          }
+          else if(property === "education"){
+            arr.push("educationAndLiteracy", "childrenAndYouth")
+          }
+          else if(property === "services"){
+            arr.push("crisisSupport",	"disasterRelief",	"emergencyAndSafety")
+          } 
+        }
+
+        if(object[property] === true && (property === "kids" || property === "groups" || property === "seniors" || property === "teens")){
+          greatFor.push(property)
         }
       }
-      console.log(this.props.form);
+
       this.setState({
         query: gql`{
           searchOpportunities(
               input: {
                 location: "${this.props.form.location}",
                 virtual: ${this.props.form.virtual},
-                categories: ${JSON.stringify(arr).replace(/["]+/g, '')}
+                categories: ${JSON.stringify(arr).replace(/["]+/g, '')},
+                greatFor: ${JSON.stringify(greatFor).replace(/["]+/g, '')},
               }) 
               {
               currentPage
@@ -107,7 +125,8 @@ class Results extends React.Component {
                   url
                   phoneNumber
                   imageUrl
-                }      
+                }
+                greatFor     
               }
             }
           }`
@@ -126,13 +145,18 @@ class Results extends React.Component {
           return (
             <div className={"results-container"}>
              <div className={"city-header"}>
-              <h2>Opportunities Near {startCase(this.props.form.location) 
-              || ('Sacramento')}</h2>
+               {
+                 this.props.form.virtual
+                  ? <h2>Virtual Opportunities</h2>
+                  : <h2>Opportunities Near {startCase(this.props.form.location)}</h2>
+               }
+
             </div>
             <div className={"results-inner"}>
-             {data.searchOpportunities.opportunities.map((opportunities, index) => (
+             {data.searchOpportunities.opportunities.map((opportunities, index) => {
+             return (
               <div className={"cards"} key={index}>
-               { console.log(opportunities.location.virtual) }
+               {/* { console.log(opportunities.location.virtual) } */}
                 <div className={"top-card"}>
                  <div className={"opp-img"}>
                   <div className={"img-inner"}>
@@ -171,13 +195,19 @@ class Results extends React.Component {
                 </div>
               <div className={"opp-title-cont"}>
                 <div className={"opp-title"}>
-                   <h3>{opportunities.title}</h3>
+                <h3>{opportunities.title}</h3>
                 </div>
                 <div className={"opp-desc"}>
                   {/* {console.log("desc " + opportunities.description)} */}
                  <p>{opportunities.description.replace(regex,'')}</p>
                 </div>
                </div>
+               <div className={"category-cont-inner"} style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
+                  <h5>Great for:</h5>
+                  {opportunities.greatFor.map((item, index)=>{
+                    return <span key={index}>{item}</span>
+                  })}
+                 </div>
               <div className={"learn-more"}> 
                <a href={opportunities.url} target={"_blank"}>
                 <span>Learn More</span>
@@ -186,6 +216,7 @@ class Results extends React.Component {
             </div>
         </div>
          )
+        }
         )}
         </div>
       </div>

@@ -19,13 +19,17 @@ app.use(bodyParser.json());
 
 // Send every request to the React app
 // Define any API routes before this runs
-app.get("*", function(req, res) {
-  res.sendFile(path.join(__dirname, "./client/build/index.html"));
-});
+app.get("/widget", function(req, res) {
+  res.sendFile(path.join(__dirname, "./widget.html")); 
+})
 
-app.get('/express_backend', (req, res) => {
-  res.send({ express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT' });
-});
+// app.get("*", function(req, res) {
+//   res.sendFile(path.join(__dirname, "./client/build/index.html"));
+// });
+
+// app.get('/express_backend', (req, res) => {
+//   res.send({ express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT' });
+// });
 
 app.listen(PORT);
 

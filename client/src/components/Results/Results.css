@@ -51,7 +51,7 @@
     box-shadow: 0.75rem 0.85rem 1.75rem 0 rgba(0,0,0,.32);
     border-radius: 30px;
     margin-bottom: 50px;
-    height: 435px;
+    /* height: 435px; */
     overflow: hidden;
     padding: 10px 5px;
     margin-left: 20px;
@@ -232,7 +232,7 @@
 }
 
 .learn-more {
-    position: absolute;
+    /* position: absolute; */
     display: flex;
     bottom: 0;
     width: 100%;

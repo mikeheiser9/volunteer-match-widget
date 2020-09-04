@@ -4,29 +4,38 @@ import "../Form/Form.css";
 class Form extends React.Component {
   state = {
     location: "",
-    virtual: false,
-    hunger: false,
-    educationAndLiteracy: false,
-    healthAndMedicine: false,
-    emergencyAndSafety: false
+    virtual: true,
+    food: false,
+    education: false,
+    healthAndSafety: false,
+    services: false
   };
 
   handleInputChange = (e) => {
-
+    if(e.target.name === "location" && this.state.virtual && this.state.location.length > 0){
+      this.setState({
+        virtual: false
+      })
+    }
     this.setState({
       location: e.target.value
     })
   }
 
   handleFilter = (evt) => {
+    if(evt.target.name === "virtual" && !this.state.virtual){
+      this.setState({
+        location: ""
+      })
+    }
     this.setState({
       [evt.target.name] : !this.state[`${evt.target.name}`]
     })
+
   }
   
 
   render() {
-    console.log(this.state);
     return (
       <div className={'form-cont'}>
         <div className={'form-inner'}>
@@ -45,6 +54,7 @@ class Form extends React.Component {
              <div className={"virt-opp-cont"}>
               <input
                 onChange={this.handleFilter}
+                checked={this.state.location === "" ? true : this.state.virtual}
                 value={this.state.virtual}
                 name={"virtual"}
                 type={"checkbox"}
@@ -63,8 +73,8 @@ class Form extends React.Component {
             <div className={"cat-check-input"}>
              <input
               onChange={this.handleFilter}
-             value={this.state.hunger}
-             name={"hunger"}
+             value={this.state.food}
+             name={"food"}
              type={"checkbox"}
              id={"cation-input"}
             />
@@ -73,8 +83,8 @@ class Form extends React.Component {
             <div className={"cat-check-input"}>
              <input
               onChange={this.handleFilter}
-              value={this.state.healthAndMedicine}
-              name={"healthAndMedicine"}
+              value={this.state.healthAndSafety}
+              name={"healthAndSafety"}
               type={"checkbox"}
               id={"cation-input"}
             />
@@ -83,8 +93,8 @@ class Form extends React.Component {
             <div className={"cat-check-input"}>
              <input
               onChange={this.handleFilter}
-              value={this.state.educationAndLiteracy}
-              name={"educationAndLiteracy"}
+              value={this.state.education}
+              name={"education"}
               type={"checkbox"}
               id={"cation-input"}
             />
@@ -93,14 +103,66 @@ class Form extends React.Component {
             <div className={"cat-check-input"}>
              <input
             onChange={this.handleFilter}
-             value={this.state.emergencyAndSafety}
-             name={"emergencyAndSafety"}
+             value={this.state.services}
+             name={"services"}
              type={"checkbox"}
              id={"cation-input"}
             />
              <label>Services</label>
             </div>
             </div>
+
+            <div className={"select-cat"}>
+              <div className={"essential-msg"}>
+                <h4>Great for:</h4>
+              </div>
+            </div>
+            <div className={"cat-check-parent"}>
+              <div className={"cat-check-input"}>
+                <input
+                  onChange={this.handleFilter}
+                value={this.state.groups}
+                name={"groups"}
+                type={"checkbox"}
+                id={"cation-input"}
+                />
+                <label>Groups</label>
+              </div>
+
+              <div className={"cat-check-input"}>
+                <input
+                  onChange={this.handleFilter}
+                value={this.state.kids}
+                name={"kids"}
+                type={"checkbox"}
+                id={"cation-input"}
+                />
+                <label>Kids</label>
+              </div>
+
+              <div className={"cat-check-input"}>
+                <input
+                  onChange={this.handleFilter}
+                value={this.state.seniors}
+                name={"seniors"}
+                type={"checkbox"}
+                id={"cation-input"}
+                />
+                <label>Seniors</label>
+              </div>
+
+              <div className={"cat-check-input"}>
+                <input
+                  onChange={this.handleFilter}
+                value={this.state.teens}
+                name={"teens"}
+                type={"checkbox"}
+                id={"cation-input"}
+                />
+                <label>Teens</label>
+              </div>
+            </div>
+
         <button
             type="submit"
             onClick={(event)=>this.props.handleFormSubmit(event, this.state)}
